@@ -1,6 +1,8 @@
 pytz>=2018.9
 flask==1.0.2
-jsonschema==2.6.0
+json==2.6.0
 psycopg2-binary==2.7.7
 requests==2.21.0
 hurry.filesize==0.9
+flask_limiter.util==1.0.1
+wget==3.2
