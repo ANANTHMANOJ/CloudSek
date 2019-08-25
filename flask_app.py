@@ -184,7 +184,7 @@ def index():
             </head>
             <body>
               <h1 style="margin-left:27%">Download Manager</h1>
-             <form action="localhost:5000/download?url=" method="POST" target="_blank" id="my-form">
+             <form action="/download?url=" method="POST" target="_blank" id="my-form">
               <input type="text" name="reference-number" class="inpt" id="reference-number" placeholder="Enter the url" />
               
               <input type="submit" value="download" class="btn"/>
@@ -194,7 +194,7 @@ def index():
                 ( There are '''+str(rows)+''' downloads.
                  Please enter the id (serial number) to view the status ``)
             </div>
-              <form action="localhost:5000/status?id=" method="get" target="_blank" id="status" >
+              <form action="/status?id=" method="get" target="_blank" id="status" >
               <input type="number" name="id" id="status-number" class="inpt" placeholder="Enter the id" />
               
               <input type="submit" value="search" class="btn"/>
@@ -249,7 +249,7 @@ def not_found(error):
         res_con=PostgresConnector(ConnectionType.RESEARCHER)
         query4='''delete from download_datas where uid= (%s)'''                # connecting to database
         res_con.execute(query4,str(did))
-        return '''<h2>Error: No file to download / permission not granted</h2>'''+ repr(error)  
+        return '''<h2>Error: No file to download / permission not granted</h2>'''#+ repr(error)  
     
  
 if __name__ == '__main__':  #main function
