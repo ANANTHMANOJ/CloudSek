@@ -1,7 +1,7 @@
-from psycopg2.extras import RealDictCursor           #api to connect to postgres database
-from psycopg2.pool import ThreadedConnectionPool     #importing api for Multithreading
+from psycopg2.extras import RealDictCursor           # api to connect to postgres database
+from psycopg2.pool import ThreadedConnectionPool     # importing api for Multithreading
 import logging      
-import json                                #api for logs
+import json                                # api for logs
 
 logger = logging.getLogger()
 
@@ -13,7 +13,7 @@ class ConnectionType(object):
 class PostgresConnector(object):            # class that connects to database
     _instance_dict = {}
 
-    MIN_CONN, MAX_CONN = 1, 8               #max and min thread counts
+    MIN_CONN, MAX_CONN = 1, 8               # max and min thread counts
 
     def __new__(cls, connection_type):     #creating a self instance
 #creating a insgance that connects with database if its not present 
@@ -34,7 +34,7 @@ class PostgresConnector(object):            # class that connects to database
                 minconn=PostgresConnector.MIN_CONN, maxconn=PostgresConnector.MAX_CONN, **db_config)
         return cls._instance_dict[connection_type]
 
-    def __init__(self, connection_type=ConnectionType.RESEARCHER):   #initializing
+    def __init__(self, connection_type=ConnectionType.RESEARCHER):   # initializing
         self.__pool = self._instance_dict[connection_type].__pool
 
     def _get_connection(self):
@@ -44,7 +44,7 @@ class PostgresConnector(object):            # class that connects to database
         self.__pool.putconn(connection)
         
         # following are the functions for different types of queries
-    def get(self, query, args=None):   #for query which returns single row
+    def get(self, query, args=None):   # for query which returns single row
         conn = self._get_connection()
         curr = conn.cursor()
         curr.execute(query, vars=(args or ()))
@@ -53,7 +53,7 @@ class PostgresConnector(object):            # class that connects to database
         
         return result
 
-    def execute(self, query, args=None):   #for query whose return value is not required
+    def execute(self, query, args=None):   # for query whose return value is not required
         conn = self._get_connection()
         curr = conn.cursor()
         curr.execute(query, vars=(args or ()))
