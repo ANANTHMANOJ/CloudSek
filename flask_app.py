@@ -18,7 +18,7 @@ limiter= Limiter(
 #The following funtion to download the file from given url
 #It take the url from the form in html  through POST method, assigns the unique id and enters it into database
 did=0
-@app.route('/download')                                 
+@app.route('/download',methods=["POST"])      #the video that has recorded is done without POST method                                 
 def user_download():
     global did
     url = request.args['url']           # getting the url
