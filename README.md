@@ -10,7 +10,7 @@ pip install flask
 pip install flask_limiter  
 pip install hurry.filesize  
 pip install wget  
-pip intall psycopg2  
+pip install psycopg2  
 pip install json  
 ```
  
@@ -32,4 +32,4 @@ Here the _multithreads_ along with connection to the POSTGRESQL database is made
  ```
  
 Also a docker file along with requirement text has been given as the container.
-###### A Demo video is also available for understaning ######
+###### A Demo video is also available for understanding ######
